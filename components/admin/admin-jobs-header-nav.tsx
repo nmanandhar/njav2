@@ -8,6 +8,7 @@ export function AdminJobsHeaderNav() {
   const isJobsPage = pathname === "/admin-portal/jobs" || pathname === "/admin-portal/jobs/jobs"
   const isCalendarPage = pathname?.includes("/jobs/calendar")
   const isPreStartPage = pathname?.includes("/jobs/pre-start-checklists")
+  const isArchivedPage = pathname?.includes("/jobs/archived")
 
   return (
     <div className="bg-card border-b border-border">
@@ -51,6 +52,16 @@ export function AdminJobsHeaderNav() {
             }`}
           >
             Pre-Start Checklists Log
+          </Link>
+          <Link
+            href="/admin-portal/jobs/archived"
+            className={`border-b-2 py-3 px-1 text-sm font-medium ${
+              isArchivedPage
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+            }`}
+          >
+            Archived Jobs
           </Link>
         </nav>
       </div>

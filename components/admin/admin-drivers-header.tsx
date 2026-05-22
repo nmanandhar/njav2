@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, Plus, Download, Upload } from "lucide-react"
+import { Search, Plus, Download, Upload, Calendar } from "lucide-react"
 import { AddDriverDialog } from "./add-driver-dialog"
 
 export function AdminDriversHeader() {
@@ -12,12 +13,20 @@ export function AdminDriversHeader() {
   return (
     <header className="bg-card border-b border-border px-6 py-4">
       <div className="flex items-center justify-between">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search drivers, license, certifications..."
-            className="pl-10 w-96 bg-input border-border"
-          />
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search drivers, license, certifications..."
+              className="pl-10 w-96 bg-input border-border"
+            />
+          </div>
+          <Link href="/admin-portal/fleet/drivers/leave-calendar">
+            <Button variant="outline" className="text-foreground hover:bg-accent bg-transparent gap-2">
+              <Calendar className="h-4 w-4" />
+              Holiday/Leave Calendar
+            </Button>
+          </Link>
         </div>
 
         <div className="flex items-center space-x-4">

@@ -28,6 +28,7 @@ import {
   Video,
   Truck,
   File,
+  Archive,
 } from "lucide-react"
 import {
   DropdownMenu,
@@ -1274,6 +1275,18 @@ export function AdminJobsTable() {
                         <span className="sr-only">Duplicate Job</span>
                         <Copy className="h-4 w-4" />
                       </Button>
+                      <Button
+                        variant="ghost"
+                        className="h-8 w-8 p-0"
+                        title="Archive Job"
+                        onClick={() => {
+                          handleStatusChange(job.id, "Archived")
+                          alert(`Job ${job.jobNumber} has been archived.`)
+                        }}
+                      >
+                        <span className="sr-only">Archive Job</span>
+                        <Archive className="h-4 w-4" />
+                      </Button>
                     </div>
                   </div>
 
@@ -1290,7 +1303,9 @@ export function AdminJobsTable() {
                                 ? "bg-amber-500 text-white"
                                 : currentStatus === "Completed"
                                   ? "bg-green-600 text-white"
-                                  : "bg-slate-800 text-white"
+                                  : currentStatus === "Archived"
+                                    ? "bg-gray-500 text-white"
+                                    : "bg-slate-800 text-white"
                           }`}
                         >
                           <SelectValue />
@@ -1318,6 +1333,12 @@ export function AdminJobsTable() {
                             <div className="flex items-center gap-2">
                               <div className="h-2 w-2 rounded-full bg-red-600" />
                               Pending
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="Archived" className="font-semibold text-gray-500">
+                            <div className="flex items-center gap-2">
+                              <div className="h-2 w-2 rounded-full bg-gray-500" />
+                              Archived
                             </div>
                           </SelectItem>
                         </SelectContent>
